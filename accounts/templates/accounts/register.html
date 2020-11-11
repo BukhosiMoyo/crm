@@ -1,0 +1,90 @@
+{% extends "accounts/main.html" %}
+{% load static %}
+
+{% block title %}
+Bukhosi CRM Login
+
+{% endblock title %}
+
+{% block content %}
+
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper mt-5 ">
+                <p class='bukhosi' style="font-size: 25px; color: #007bff; font-weight: 700; text-align: center;">BUKHOSI CRM REGISTER</p>
+                <div class="card fat mt-4">
+                    <div class="card-body ">
+                        <h4 class="card-title">Register your account</h4>
+                        <form method="POST" class="my-login-validation" novalidate="">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.username }}
+                                <div class="invalid-feedback">
+                                    What's your username?
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form.email }}
+                                <div class="invalid-feedback">
+                                    Your email is invalid
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form.password1 }}
+                                <div class="invalid-feedback">
+                                    Password is required
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form.password2 }}
+                                <div class="invalid-feedback">
+                                    Password is required
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="custom-checkbox custom-control">
+                                    <input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+                                    <label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+                                    <div class="invalid-feedback">
+                                        You must agree with our Terms and Conditions
+                                    </div>
+                                </div>
+                            {{ form.errors }}
+                            </div>
+
+                            <div class="form-group m-0">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    Register
+                                </button>
+                            </div>
+                            <div class="mt-4 text-center">
+                                Already have an account? <a href="{% url 'login' %}">Login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+      var form_fields = document.getElementsByTagName('input')
+      form_fields[1].placeholder='Username...';
+      form_fields[2].placeholder='Email Address...';
+      form_fields[3].placeholder='Enter password...';
+      form_fields[4].placeholder='Re-enter password...';
+
+      for (var field in form_fields){
+          form_fields[field].className += ' form-control'
+      }
+   
+  </script>
+
+{% endblock content %}

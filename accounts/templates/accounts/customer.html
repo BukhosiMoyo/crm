@@ -1,0 +1,99 @@
+{% extends "accounts/main.html" %}
+
+{%  load static %}
+
+
+{% block content %}
+{% include 'accounts/navbar.html' %}
+{% include 'accounts/sidebar.html' %}
+
+
+<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+    <div class="col-lg col-md-6 col-sm-6 mb-4 mt-3">
+        <span  class="text-uppercase page-subtitle" >Dashboard</span>
+        <h3 class="page-title">CRM Customer</h3>
+        <hr>
+    </div>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <!-- Discussions Component -->
+            <div class="col-md-4 mb-4" >
+                <div class="card card-small blog-comments">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Customer Information</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="blog-comments__item d-flex p-3">
+                            <div class="blog-comments__avatar mr-3">
+                                <img src=" {% static 'images/avatars/1.jpg' %} " alt="User avatar" /> 
+                            </div>
+                            <div class="blog-comments__content">
+                                <div class="blog-comments__meta text-muted">
+                                
+                                    <h6> Name: {{ customer.name }} </h6>
+                                    <h6> Email: <a class="text-secondary" title="Email" href="mailto:{{ customer.email }}"> {{ customer.email  }} </a> </h6>
+                                    <h6> Phone: <a class="text-secondary" title="Phone" href="tel:{{ customer.phone }}"> {{ customer.phone }} </a></h6>
+                
+                                </div>
+                                <div class="blog-comments__actions">
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-white">
+                                            <span class="text-info">
+                                            <i class="material-icons">person</i>
+                                            </span> Update Customer </button>
+                                        <button type="button" class="btn btn-white">
+                                            <span class="text-info">
+                                            <i class="material-icons">add</i>
+                                            </span> Place Order </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-top">
+                        <div class="row">
+                            <div class="col text-center view-report">
+                                <button type="submit" class="btn btn-white">View Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% include 'accounts/Chart1.html' %}
+            
+            <!-- Users By Device Stats -->
+            <div class="col-md-4 mb-4 ">
+                <div class="card card-small h-100">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Users by device</h6>
+                    </div>
+                    <div class="card-body d-flex py-0">
+                        <canvas height="220" class="blog-users-by-device m-auto"></canvas>
+                    </div>
+                    <div class="card-footer border-top">
+                        <div class="row">
+                            <div class="col">
+                                <select class="custom-select custom-select-sm" style="max-width: 130px;">
+                                <option selected>Last Week</option>
+                                <option value="1">Today</option>
+                                <option value="2">Last Month</option>
+                                <option value="3">Last Year</option>
+                                </select>
+                            </div>
+                            <div class="col text-right view-report">
+                                <a href="#">Full report &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <!-- End Users By Device Stats -->
+        </div>
+    </div>
+</main>
+{% include 'accounts/customer_table.html' %}
+{% include 'accounts/footer.html' %}
+
+{% endblock content %}

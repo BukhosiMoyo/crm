@@ -1,0 +1,64 @@
+{% extends "accounts/main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Small Stats Blocks -->
+<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+    <div class="container-fluid " >
+        <div class="row">
+            <div class="col-lg col-md-6 col-sm-6 ml-2 mb-4">
+            <div class="stats-small stats-small--1 card card-small">
+                <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                    <span class="stats-small__label text-uppercase">Total Orders</span>
+                    <h6 class="stats-small__value count my-3">{{  total_orders }}</h6>
+                    </div>
+                    <div class="stats-small__data">
+                    <span class="stats-small__percentage stats-small__percentage--increase">-67%</span>
+                    </div>
+                </div>
+                <canvas height="120" class="blog-overview-stats-small-1"></canvas>
+                </div>
+            </div>
+            </div>
+            <div class="col-lg col-md-6 col-sm-6 mb-4">
+            <div class="stats-small stats-small--1 card card-small">
+                <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                    <span class="stats-small__label text-uppercase">Orders Delivered</span>
+                    <h6 class="stats-small__value count my-3">{{ delivered }}</h6>
+                    </div>
+                    <div class="stats-small__data">
+                    <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>
+                    </div>
+                </div>
+                <canvas height="120" class="blog-overview-stats-small-2"></canvas>
+                </div>
+            </div>
+            </div>
+            <div class="col-lg col-md-4 col-sm-6 mr-2 mb-4">
+            <div class="stats-small stats-small--1 card card-small">
+                <div class="card-body p-0 d-flex">
+                <div class="d-flex flex-column m-auto">
+                    <div class="stats-small__data text-center">
+                    <span class="stats-small__label text-uppercase">Orders Pending</span>
+                    <h6 class="stats-small__value count my-3">{{ pending }}</h6>
+                    </div>
+                    <div class="stats-small__data">
+                    <span class="stats-small__percentage stats-small__percentage--decrease">3.8%</span>
+                    </div>
+                </div>
+                <canvas height="120" class="blog-overview-stats-small-3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- End Small Stats Blocks -->
+
+{% endblock content %}
+

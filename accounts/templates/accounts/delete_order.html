@@ -1,0 +1,33 @@
+{% extends "accounts/main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% include 'accounts/navbar.html' %}
+{% include 'accounts/sidebar.html' %}
+
+<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+    <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i title='update' style="font-size: 20px;" class="material-icons">close</i></span>
+        </button>
+        <i class="fa fa-info mx-2"></i>
+        <strong>How you doin'?</strong> This option cannot be undone make sure you are doing the right thing!!!
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg col-md-6 col-sm-6 mt-4 mb-4 ml-3">
+                <span >Are you sure you want to delete <span style="color:crimson">{{ item }}</span></span>
+                <hr>
+                <form action="{% url 'delete_order' item.id %}" method="POST">
+                    {% csrf_token %}
+                    <a class='btn btn-warning btn-sm' href="{% url 'home' %}">Cancel</a>
+                    <input style="font-weight: 500;" class='btn btn-danger btn-sm' type="submit" name="Confirm">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% include "accounts/footer.html" %}
+{% endblock content %}

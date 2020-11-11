@@ -1,0 +1,92 @@
+{% extends "accounts/main.html" %}
+
+{% block content %}
+{% include 'accounts/navbar.html' %}
+{% include 'accounts/sidebar.html' %}
+
+<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+    <div class="col-lg col-md-6 col-sm-6 mb-4 mt-3">
+        <span  class="text-uppercase page-subtitle" >Dashboard</span>
+        <h3 class="page-title">CRM Products</h3>
+    </div>
+    <hr>
+    <!-- beginning of the customer table -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Products</h6>
+                    </div>
+                    <div class="card-body p-0 pb-3 text-center">
+                        <table class="table mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col" class="border-0">Products</th>
+                                    <th scope="col" class="border-0">Category</th>
+                                    <th scope="col" class="border-0">Price</th>
+                                </tr>
+                                {% for i in products %}
+                                    <tr>
+                                        <td>{{ i.name }}</td>
+                                        <td>{{ i.category }}</td>
+                                        <td>{{ i.price }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </thead>
+                            <tbody>                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> 
+                </div>
+            </div> 
+            <!-- End of the customer table -->
+            <div class="col-md-4">
+                <div class="card card-small">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Top Referrals</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-small list-group-flush">
+                            <li class="list-group-item d-flex px-3">
+                                <span class="text-semibold text-fiord-blue">GitHub</span>
+                                <span class="ml-auto text-right text-semibold text-reagent-gray">19,291</span>
+                            </li>
+                            <li class="list-group-item d-flex px-3">
+                                <span class="text-semibold text-fiord-blue">Stack Overflow</span>
+                                <span class="ml-auto text-right text-semibold text-reagent-gray">11,201</span>
+                            </li>
+                            <li class="list-group-item d-flex px-3">
+                                <span class="text-semibold text-fiord-blue">Hacker News</span>
+                                <span class="ml-auto text-right text-semibold text-reagent-gray">9,291</span>
+                            </li>        
+                            
+                        </ul>
+                    </div>
+                    <div class="card-footer border-top">
+                        <div class="row">
+                            <div class="col">
+                                <select class="custom-select custom-select-sm">
+                                    <option selected>Last Week</option>
+                                    <option value="1">Today</option>
+                                    <option value="2">Last Month</option>
+                                    <option value="3">Last Year</option>
+                                </select>
+                            </div>
+                            <div class="col text-right view-report">
+                                <a href="#">Full report &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Referrals Component -->
+</main>
+{% include "accounts/footer.html" %}
+
+
+{% endblock content %}

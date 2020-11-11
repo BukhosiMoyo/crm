@@ -1,0 +1,63 @@
+{% extends "accounts/main.html" %}
+
+{% load static %}
+
+{% block title %}
+Customer Dashboard
+{% endblock title %}
+
+{% block content %}
+
+{% include "accounts/sidebar.html" %}
+{% include 'accounts/navbar.html' %}
+{% include 'accounts/page_header.html' %}
+{% include "accounts/status.html" %}
+
+<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Product Information</h6>
+                    </div>
+                    <hr>
+                    <div class="card-body p-0 pb-3 text-center">
+                        <table class="table mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col" class="border-0">Product</th>
+                                    <th scope="col" class="border-0">Note</th>
+                                    <th scope="col" class="border-0">Date Ordered</th>
+                                    <th scope="col" class="border-0">Status</th>
+                                    <th scope="col" class="border-0">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                                {% for order in orders %}
+                                    <tr>
+
+                                        <td>{{ order.product }}</td>
+                                        <td>{{ order.note }}</td>
+                                        <td>{{ order.date_created }}</td>
+                                        <td>{{ order.status }}</td>
+                                        <td class="table-action">
+                                            <a href=" {% url 'update_order' order.id %} "><i title='update' style="font-size: 20px;" class="material-icons">edit</i></a>
+                                            <a href=" {% url 'delete_order' order.id %} "><i title='delete' style="font-size: 20px;" class="material-icons">delete</i></a>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% include "accounts/footer.html" %}
+
+{% endblock content %}
